@@ -34,7 +34,7 @@
 #define TAPPING_TOGGLE 2
 
 #define ONESHOT_TAP_TOGGLE 4
-#define ONESHOT_TIMEOUT 100
+#define ONESHOT_TIMEOUT 200
 
 // If you are using an Elite C rev3 on the slave side, uncomment the lines below:
 // #define SPLIT_USB_DETECT
@@ -46,5 +46,5 @@
 
 #if defined(COMBO_ENABLE)
 #define COMBO_COUNT 3
-#define COMBO_TERM 100
+#define COMBO_TERM 150
 #endif

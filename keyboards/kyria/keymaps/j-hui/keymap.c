@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_EQL,   KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                           KC_Y,   KC_U,   KC_I,     KC_O,   KC_P,     KC_LBRC,
       KC_MINS,  KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                           KC_H,   KC_J,   KC_K,     KC_L,   KC_SCLN,  KC_QUOT,
       KC_GRV,   KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_LEFT,  KC_RIGHT,   KC_DOWN,  KC_UP,  KC_N,   KC_M,   KC_COMM,  KC_DOT, KC_SLSH,  KC_RBRC,
-      KC_BTN1, LGUI_T(KC_TAB), KC_SPC, KC_LCTL, LALT_T(KC_ESC),           OSL(_NUMSYM), OSM(MOD_LSFT), KC_BSPC, LT(_NUMSYM, KC_ENT), TO(_QWERTY)
+      KC_BTN1, KC_LGUI, KC_SPC, KC_LCTL, KC_LALT,           OSL(_NUMSYM), OSM(MOD_LSFT), KC_BSPC, OSL(_NUMSYM), TO(_QWERTY)
     ),
 /*
  * SYMNUM
@@ -52,17 +52,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |        |  (   |  4   |  5   |  6   |  )   |                              |      |  $   |  %   |  ^   |  |   |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |  ,   |  7   |  8   |  9   | Space|      |      |  |      |      |      |  &   |  *   |  .   |  \   |        |
+ * |        |  0   |  7   |  8   |  9   | Tab  |      |      |  |      |      |      |  &   |  *   | Ent  |  \   |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |  0   |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_NUMSYM] = LAYOUT(
-      KC_PLUS,  KC_LCBR,  KC_1,     KC_2,       KC_3,       KC_RCBR,                                          _______, KC_EXLM,  KC_AT,    KC_HASH,  KC_DEL,   KC_LCBR,
-      KC_UNDS,  KC_LPRN,  KC_4,     KC_5,       KC_6,       KC_RPRN,                                          _______, KC_DLR,   KC_PERC,  KC_CIRC,  KC_PIPE,  KC_DQUO,
-      KC_TILD,  KC_COMM,  KC_7,     KC_8,       KC_9,       KC_SPC,  _______,  _______,  _______,  _______,   _______, KC_AMPR,  KC_ASTR,  KC_COMM,  KC_BSLS,  KC_RCBR,
-                       _______, _______, KC_0, _______, _______,  _______,  _______, _______, _______, _______
+      KC_PLUS,  KC_LCBR,  KC_1,     KC_2,       KC_3,       KC_RCBR,                                          KC_DEL, KC_EXLM,  KC_AT,    KC_HASH,  KC_PIPE,  KC_LCBR,
+      KC_UNDS,  KC_LPRN,  KC_4,     KC_5,       KC_6,       KC_RPRN,                                          KC_BSPC, KC_DLR,   KC_PERC,  KC_CIRC,  KC_BSLS,  KC_DQUO,
+      KC_TILD,  KC_0,     KC_7,     KC_8,       KC_9,       KC_TAB,  KC_HOME,  KC_END,  KC_PGDN,  KC_PGUP,   MO(_FUNCTION), KC_AMPR,  KC_ASTR,  KC_ENT,   _______, KC_RCBR,
+                       _______, _______, _______, _______, _______,  _______,  _______, _______, _______, _______
     ),
 /*
  * Adjust Layer: Function keys, RGB
