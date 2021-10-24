@@ -16,7 +16,7 @@
 
 #pragma once
 
-#define TAPPING_TERM 150
+#define TAPPING_TERM 200
 /* #define IGNORE_MOD_TAP_INTERRUPT */
 #define PERMISSIVE_HOLD
 #define TAPPING_TOGGLE 2
@@ -29,6 +29,6 @@
 #endif
 
 #if defined(COMBO_ENABLE)
-#define COMBO_COUNT 3
 #define COMBO_TERM 150
+#define COMBO_COUNT 4
 #endif

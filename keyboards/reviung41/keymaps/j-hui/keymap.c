@@ -52,8 +52,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_reviung41(
     KC_EQL,   KC_Q,     KC_W,     KC_E,     KC_R,      KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,
     KC_MINS,  KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
-    KC_GRV,   KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RBRC,
-                                            TD(TD_GUI_ALT),   KC_LCTL,    KC_SPC,   OSM(MOD_LSFT),    TD(TD_NUM_NAV)
+    LT(_NAVFN, KC_GRV),   KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RBRC,
+                                            KC_LGUI,  KC_LCTL,    KC_SPC,   KC_LSFT,  MO(_NUMSYM)
   ),
 
   [_NUMSYM] = LAYOUT_reviung41(
@@ -65,8 +65,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NAVFN] = LAYOUT_reviung41(
     RGB_VAI,   RGB_M_P, KC_F1,  KC_F2,  KC_F3,  KC_F10,            RGB_SAD,  RGB_HUD,  RGB_HUI,  RGB_SAI,  XXXXXXX,  RGB_MOD,
-    RGB_VAD,   RGB_M_B, KC_F4,  KC_F5,  KC_F6,  KC_F11,            KC_LEFT,  KC_DOWN,  KC_UP  ,  KC_RGHT,  XXXXXXX,  XXXXXXX,
-    RGB_TOG,   RGB_M_R, KC_F7,  KC_F8,  KC_F9,  KC_F12,            KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END ,  XXXXXXX,  RGB_RMOD,
+    RGB_VAD,   RGB_M_B, KC_F4,  KC_F5,  KC_F6,  KC_F11,            KC_LEFT,  KC_DOWN,  KC_UP  ,  KC_RGHT,  XXXXXXX,  RGB_TOG,
+    XXXXXXX,   RGB_M_R, KC_F7,  KC_F8,  KC_F9,  KC_F12,            KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END ,  XXXXXXX,  RGB_RMOD,
                                             _______,   _______,  _______,  _______,  _______
   ),
 };
@@ -76,6 +76,8 @@ enum combos {
       TAB_COMBO
     , ENT_COMBO
     , ESC_COMBO
+    , ALT_COMBO
+    , COMBO_LENGTH
     /* , EQL_COMBO */
     /* , MIN_COMBO */
     /* , ACC_COMBO */
@@ -84,9 +86,12 @@ enum combos {
     /* , RBR_COMBO */
 };
 
+uint16_t COMBO_LEN = COMBO_LENGTH;
+
 const uint16_t PROGMEM TAB_combo[] = {KC_C,     KC_V,       COMBO_END};
 const uint16_t PROGMEM ENT_combo[] = {KC_M,     KC_COMM,    COMBO_END};
 const uint16_t PROGMEM ESC_combo[] = {KC_X,     KC_V,       COMBO_END};
+const uint16_t PROGMEM ALT_combo[] = {KC_LGUI,  KC_LCTL,    COMBO_END};
 /* const uint16_t PROGMEM EQL_combo[] = {KC_Q,     KC_W,       COMBO_END}; */
 /* const uint16_t PROGMEM MIN_combo[] = {KC_A,     KC_S,       COMBO_END}; */
 /* const uint16_t PROGMEM ACC_combo[] = {KC_Z,     KC_X,       COMBO_END}; */
@@ -98,6 +103,7 @@ combo_t key_combos[COMBO_COUNT] = {
     [TAB_COMBO] = COMBO(TAB_combo, KC_TAB)
   , [ENT_COMBO] = COMBO(ENT_combo, KC_ENT)
   , [ESC_COMBO] = COMBO(ESC_combo, KC_ESC)
+  , [ALT_COMBO] = COMBO(ALT_combo, KC_LALT)
   /* , [EQL_COMBO] = COMBO(EQL_combo, KC_EQL) */
   /* , [MIN_COMBO] = COMBO(MIN_combo, KC_MINS) */
   /* , [ACC_COMBO] = COMBO(ACC_combo, KC_GRV) */
