@@ -24,12 +24,12 @@ enum encoder_names {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
         RESET           , RGB_MOD       , _______           ,
-        MT(1, KC_TAB)   , KC_UP         , LSFT_T(KC_ESC)    ,
+        LT(1, KC_TAB)   , KC_UP         , KC_LCTL           ,
         KC_LEFT         , KC_DOWN       , KC_RGHT
     ),
     [1] = LAYOUT(
         _______         , _______       , _______           ,
-        _______         , KC_PGUP       , KC_LCTL           ,
+        _______         , KC_PGUP       , LSFT_T(KC_ESC)    ,
         KC_HOME         , KC_PGDN       , KC_END
     ),
 };
