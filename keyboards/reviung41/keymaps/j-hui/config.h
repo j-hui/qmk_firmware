@@ -30,5 +30,5 @@
 
 #if defined(COMBO_ENABLE)
 #define COMBO_TERM 150
-#define COMBO_COUNT 4
+/* #define COMBO_COUNT 4 */
 #endif
