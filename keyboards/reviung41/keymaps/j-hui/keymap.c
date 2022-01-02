@@ -23,16 +23,16 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_reviung41(
-    KC_EQL,   KC_Q,     KC_W,     KC_E,     KC_R,      KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,
-    KC_MINS,  KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
-    LT(_NAVFN, KC_GRV),   KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RBRC,
+    MT(MOD_LALT, KC_EQL),   KC_Q,     KC_W,     KC_E,     KC_R,      KC_T,               KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,
+    KC_MINS,                KC_A,     KC_S,     KC_D,     KC_F,      KC_G,               KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
+    MT(MOD_LSFT, KC_GRV),   KC_Z,     KC_X,     KC_C,     KC_V,      KC_B,               KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  LT(_NAVFN, KC_RBRC),
                                             KC_LGUI,  KC_LCTL,    KC_SPC,   KC_LSFT,  MO(_NUMSYM)
   ),
 
   [_NUMSYM] = LAYOUT_reviung41(
-    KC_PLUS,  KC_LCBR,  KC_1,     KC_2,     KC_3,     KC_RCBR,      KC_DEL,     KC_EXLM,  KC_AT,    KC_HASH,  KC_DEL,  KC_LCBR,
-    KC_UNDS,  KC_LPRN,  KC_4,     KC_5,     KC_6,     KC_RPRN,      KC_BSPC,    KC_DLR,   KC_PERC,  KC_CIRC,  KC_PIPE,  KC_DQUO,
-    KC_TILD,  KC_0,     KC_7,     KC_8,     KC_9,     KC_TAB,       XXXXXXX,    KC_AMPR,  KC_ASTR,  KC_ENT,   KC_BSLS, KC_RCBR,
+    MT(MOD_LALT, KC_PLUS),  KC_LCBR,  KC_1,     KC_2,     KC_3,     KC_RCBR,      KC_DEL,     KC_EXLM,  KC_AT,    KC_HASH,  KC_DEL,  KC_LCBR,
+    KC_UNDS,                KC_LPRN,  KC_4,     KC_5,     KC_6,     KC_RPRN,      KC_BSPC,    KC_DLR,   KC_PERC,  KC_CIRC,  KC_PIPE,  KC_DQUO,
+    MT(MOD_LSFT, KC_TILD),  KC_0,     KC_7,     KC_8,     KC_9,     KC_TAB,       XXXXXXX,    KC_AMPR,  KC_ASTR,  KC_ENT,   KC_BSLS, KC_RCBR,
                                           _______, _______, _______, _______, _______
   ),
 
@@ -51,12 +51,6 @@ enum combos {
     , ESC_COMBO
     , ALT_COMBO
     , COMBO_LENGTH
-    /* , EQL_COMBO */
-    /* , MIN_COMBO */
-    /* , ACC_COMBO */
-    /* , LBR_COMBO */
-    /* , QUT_COMBO */
-    /* , RBR_COMBO */
 };
 
 uint16_t COMBO_LEN = COMBO_LENGTH;
@@ -65,23 +59,11 @@ const uint16_t PROGMEM TAB_combo[] = {KC_C,     KC_V,       COMBO_END};
 const uint16_t PROGMEM ENT_combo[] = {KC_M,     KC_COMM,    COMBO_END};
 const uint16_t PROGMEM ESC_combo[] = {KC_X,     KC_V,       COMBO_END};
 const uint16_t PROGMEM ALT_combo[] = {KC_LGUI,  KC_LCTL,    COMBO_END};
-/* const uint16_t PROGMEM EQL_combo[] = {KC_Q,     KC_W,       COMBO_END}; */
-/* const uint16_t PROGMEM MIN_combo[] = {KC_A,     KC_S,       COMBO_END}; */
-/* const uint16_t PROGMEM ACC_combo[] = {KC_Z,     KC_X,       COMBO_END}; */
-/* const uint16_t PROGMEM LBR_combo[] = {KC_O,     KC_P,       COMBO_END}; */
-/* const uint16_t PROGMEM QUT_combo[] = {KC_L,     KC_SCLN,    COMBO_END}; */
-/* const uint16_t PROGMEM RBR_combo[] = {KC_DOT,   KC_SLSH,    COMBO_END}; */
 
 combo_t key_combos[] = {
     [TAB_COMBO] = COMBO(TAB_combo, KC_TAB)
   , [ENT_COMBO] = COMBO(ENT_combo, KC_ENT)
   , [ESC_COMBO] = COMBO(ESC_combo, KC_ESC)
   , [ALT_COMBO] = COMBO(ALT_combo, KC_LALT)
-  /* , [EQL_COMBO] = COMBO(EQL_combo, KC_EQL) */
-  /* , [MIN_COMBO] = COMBO(MIN_combo, KC_MINS) */
-  /* , [ACC_COMBO] = COMBO(ACC_combo, KC_GRV) */
-  /* , [LBR_COMBO] = COMBO(LBR_combo, KC_LBRC) */
-  /* , [QUT_COMBO] = COMBO(QUT_combo, KC_QUOT) */
-  /* , [RBR_COMBO] = COMBO(RBR_combo, KC_RBRC) */
 };
 #endif

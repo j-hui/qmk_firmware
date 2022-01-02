@@ -16,20 +16,11 @@
 
 #pragma once
 
-#ifdef OLED_DRIVER_ENABLE
-  #define OLED_DISPLAY_128X64
-#endif
+#define MASTER_LEFT
 
-#ifdef RGBLIGHT_ENABLE
-  #define RGBLIGHT_ANIMATIONS
-  #define RGBLIGHT_HUE_STEP 8
-  #define RGBLIGHT_SAT_STEP 8
-  #define RGBLIGHT_VAL_STEP 8
-  #define RGBLIGHT_LIMIT_VAL 150
-#endif
-
-#define TAPPING_TERM 150
+#define TAPPING_TERM 120
 /* #define IGNORE_MOD_TAP_INTERRUPT */
+/* #define TAPPING_FORCE_HOLD */
 #define PERMISSIVE_HOLD
 #define TAPPING_TOGGLE 2
 
@@ -45,6 +36,18 @@
 #endif
 
 #if defined(COMBO_ENABLE)
-#define COMBO_COUNT 3
 #define COMBO_TERM 150
+// #define COMBO_COUNT 3
+#endif
+
+#ifdef OLED_DRIVER_ENABLE
+  #define OLED_DISPLAY_128X64
+#endif
+
+#ifdef RGBLIGHT_ENABLE
+  #define RGBLIGHT_ANIMATIONS
+  #define RGBLIGHT_HUE_STEP 8
+  #define RGBLIGHT_SAT_STEP 8
+  #define RGBLIGHT_VAL_STEP 8
+  #define RGBLIGHT_LIMIT_VAL 150
 #endif
