@@ -51,11 +51,11 @@ static void __attribute__((noinline, unused)) handleKeycodeRGBMode(const uint8_t
  * Handle keycodes for both rgblight and rgbmatrix
  */
 bool process_rgb(const uint16_t keycode, const keyrecord_t *record) {
-#ifndef SPLIT_KEYBOARD
-    if (record->event.pressed) {
-#else
-    // Split keyboards need to trigger on key-up for edge-case issue
+    // need to trigger on key-up for edge-case issue
+#ifndef RGB_TRIGGER_ON_KEYDOWN
     if (!record->event.pressed) {
+#else
+    if (record->event.pressed) {
 #endif
 #if (defined(RGBLIGHT_ENABLE) && !defined(RGBLIGHT_DISABLE_KEYCODES)) || (defined(RGB_MATRIX_ENABLE) && !defined(RGB_MATRIX_DISABLE_KEYCODES))
         uint8_t shifted = get_mods() & MOD_MASK_SHIFT;
@@ -149,7 +149,7 @@ bool process_rgb(const uint16_t keycode, const keyrecord_t *record) {
                 handleKeycodeRGB(shifted, rgb_matrix_decrease_speed, rgb_matrix_increase_speed);
 #endif
                 return false;
-            case RGB_MODE_PLAIN:
+	    case RGB_MODE_PLAIN:
 #if defined(RGBLIGHT_ENABLE) && !defined(RGBLIGHT_DISABLE_KEYCODES)
                 rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
 #endif
