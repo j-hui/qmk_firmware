@@ -57,41 +57,56 @@ combo_t key_combos[] = {
 
 #ifdef ENCODER_ENABLE
 
-bool encoder_update_user(uint8_t index, bool clockwise) {
+bool encoder_update_user(uint8_t index, bool clockwise_in) {
     // default behavior if undefined
     if (index == 0) {
-        // Conditional to reverse the direction of encoder number 1
-        // The reason I have this is that for some of my boards, it supports two different types of encoders, and they may differ in direction
-        #ifdef ENCODERS_A_REVERSE
-        if (!clockwise) {
-        #else
-        if (clockwise) {
-        #endif
-            tap_code(KC_VOLU);
+#ifdef ENCODERS_A_REVERSE
+        bool clockwise = !clockwise_in;
+#else
+        bool clockwise = clockwise_in;
+#endif
+        if (layer_state_is(_NUMSYM)) {
+            if (clockwise) {
+                tap_code(KC_PGDN);
+            } else {
+                tap_code(KC_PGUP);
+            }
         } else {
-            tap_code(KC_VOLD);
+            if (clockwise) {
+                tap_code(KC_WH_D);
+            } else {
+                tap_code(KC_WH_U);
+            }
         }
     }
     else if (index == 1) {
-      // Conditional to reverse the direction of encoder number 1
-      // The reason I have this is that for some of my boards, it supports two different types of encoders, and they may differ in direction
-      #ifdef ENCODERS_B_REVERSE
-      if (!clockwise) {
-      #else
-      if (clockwise) {
-      #endif
-        tap_code16(C(KC_RGHT));
-      }
-      else{
-        tap_code16(C(KC_LEFT));
-      }
+#ifdef ENCODERS_B_REVERSE
+        bool clockwise = !clockwise_in;
+#else
+        bool clockwise = clockwise_in;
+#endif
+        if (layer_state_is(_NUMSYM)) {
+            if (clockwise) {
+                tap_code(KC_UP);
+            } else {
+                tap_code(KC_DOWN);
+            }
+        } else {
+            if (clockwise) {
+                tap_code(KC_VOLU);
+            } else {
+                tap_code(KC_VOLD);
+            }
+        }
     }
     else if (index == 2) {
-      #ifdef ENCODERS_C_REVERSE
-      if (!clockwise) {
-      #else
+      // Should be unused?
+#ifdef ENCODERS_C_REVERSE
+        bool clockwise = !clockwise_in;
+#else
+        bool clockwise = clockwise_in;
+#endif
       if (clockwise) {
-      #endif
         press_super_tab(true);
       } else {
         press_super_tab(false);

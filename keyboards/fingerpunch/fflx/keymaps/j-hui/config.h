@@ -22,6 +22,9 @@
 
 #define USE_SERIAL_PD2
 
+#define ENCODERS_A_REVERSE
+#define ENCODERS_B_REVERSE
+
 /* #ifdef RGBLIGHT_ENABLE */
 /*     #undef RGBLED_NUM */
 /*     #define RGBLIGHT_ANIMATIONS */
