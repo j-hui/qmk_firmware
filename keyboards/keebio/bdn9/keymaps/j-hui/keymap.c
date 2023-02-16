@@ -23,54 +23,43 @@ enum encoder_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
-        RESET           , RGB_MOD       , _______           ,
-        LT(1, KC_TAB)   , KC_UP         , KC_LCTL           ,
+        KC_MPRV         , KC_MPLY       , KC_MNXT           ,
+        LT(1, KC_ESC)   , KC_UP         , LT(2, KC_ENT)     ,
         KC_LEFT         , KC_DOWN       , KC_RGHT
     ),
     [1] = LAYOUT(
         _______         , _______       , _______           ,
-        _______         , KC_PGUP       , LSFT_T(KC_ESC)    ,
-        KC_HOME         , KC_PGDN       , KC_END
+        XXXXXXX         , LSA(KC_UP)    , LCAG(KC_SPC)      ,
+        LSA(KC_LEFT)    , LSA(KC_DOWN)  , LSA(KC_RGHT)
+    ),
+    [2] = LAYOUT(
+        _______         , _______       , _______           ,
+        KC_LSFT         , LGUI(KC_A)    , XXXXXXX           ,
+        LGUI(KC_X)      , LGUI(KC_C)    , LGUI(KC_V)
     ),
 };
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == _LEFT) {
         if (clockwise) {
-            for (int i = 0; i < 16; i++) {
-                tap_code(KC_DOWN);
-            }
+            tap_code(KC_PGDN);
         } else {
-            for (int i = 0; i < 16; i++) {
-                tap_code(KC_UP);
-            }
+            tap_code(KC_PGUP);
         }
     }
     else if (index == _MIDDLE) {
         if (clockwise) {
-            tap_code(KC_WH_L);
+            tap_code(KC_VOLD);
         } else {
-            tap_code(KC_WH_R);
+            tap_code(KC_VOLU);
         }
     }
     else if (index == _RIGHT) {
         if (clockwise) {
-            tap_code(KC_WH_D);
+            tap_code16(C(KC_TAB));
         } else {
-            tap_code(KC_WH_U);
+            tap_code16(C(S(KC_TAB)));
         }
     }
     return true;
 }
-
-#if defined(COMBO_ENABLE)
-enum combos {
-    ENT_COMBO
-};
-
-const uint16_t PROGMEM ENT_combo[] = {KC_UP,     KC_DOWN,    COMBO_END};
-
-combo_t key_combos[COMBO_COUNT] = {
-  [ENT_COMBO] = COMBO(ENT_combo, KC_ENT)
-};
-#endif
