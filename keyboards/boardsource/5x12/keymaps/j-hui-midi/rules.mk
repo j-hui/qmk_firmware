@@ -1,0 +1,2 @@
+CONVERT_TO=kb2040
+MIDI_ENABLE = yes
