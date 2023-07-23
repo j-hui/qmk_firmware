@@ -15,11 +15,6 @@
  */
 #include QMK_KEYBOARD_H
 
-enum encoder_names {
-  _LEFT,
-  _RIGHT,
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_all(
                             KC_MUTE         ,   KC_MPLY         ,
@@ -48,19 +43,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == _LEFT) {
+    if (index == 0) {
         if (clockwise) {
-            tap_code(KC_VOLD);
-        } else {
             tap_code(KC_VOLU);
-        }
-    }
-    else if (index == _RIGHT) {
-        if (clockwise) {
-            tap_code(KC_MPRV);
         } else {
-            tap_code(KC_MNXT);
+            tap_code(KC_VOLD);
         }
+    } else if (index == 1) {
+        if (clockwise) {
+            tap_code(KC_MNXT);
+        } else {
+            tap_code(KC_MPRV);
+        }
+    } else {
+        return true;
     }
-    return true;
+    return false;
 }
