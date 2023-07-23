@@ -13,6 +13,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+
+/*
+  NOTE: flash with
+
+        qmk flash -kb keebio/bdn9/rev2 -km j-hui
+*/
 #include QMK_KEYBOARD_H
 
 enum encoder_names {
@@ -23,7 +30,7 @@ enum encoder_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
-        KC_MPRV         , KC_MPLY       , KC_MNXT           ,
+        KC_MUTE         , KC_SPC        , KC_MPLY           ,
         LT(1, KC_ESC)   , KC_UP         , LT(2, KC_ENT)     ,
         KC_LEFT         , KC_DOWN       , KC_RGHT
     ),
@@ -42,24 +49,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == _LEFT) {
         if (clockwise) {
+            tap_code(KC_VOLU);
+        } else {
+            tap_code(KC_VOLD);
+        }
+    } else if (index == _MIDDLE) {
+        if (clockwise) {
             tap_code(KC_PGDN);
         } else {
             tap_code(KC_PGUP);
         }
-    }
-    else if (index == _MIDDLE) {
+    } else if (index == _RIGHT) {
         if (clockwise) {
-            tap_code(KC_VOLD);
+            tap_code(KC_MNXT);
         } else {
-            tap_code(KC_VOLU);
+            tap_code(KC_MPRV);
         }
+
+    } else {
+        return true;
     }
-    else if (index == _RIGHT) {
-        if (clockwise) {
-            tap_code16(C(KC_TAB));
-        } else {
-            tap_code16(C(S(KC_TAB)));
-        }
-    }
-    return true;
+    return false;
 }

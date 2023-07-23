@@ -2,6 +2,6 @@
 #
 #       qmk flash -kb keebio/bdn9/rev2 -km j-hui
 #
-ENCODER_ENABLE = yes
-COMBO_ENABLE = yes
-RGB_MATRIX_ENABLE = yes
+# ENCODER_ENABLE = yes
+# COMBO_ENABLE = no
+# RGB_MATRIX_ENABLE = yes
